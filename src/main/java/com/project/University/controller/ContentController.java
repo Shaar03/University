@@ -7,9 +7,7 @@ import com.project.University.service.CourseService;
 import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.PagedModel;
+import org.springframework.data.web.PagedModel;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +22,9 @@ public class ContentController {
     CourseService courseService;
     @Autowired
     SemesterService semesterService;
-    @Autowired
-    PagedResourcesAssembler<Student> pagedStudentAssembler;
-    @Autowired
-    PagedResourcesAssembler<Course> pagedCourseAssembler;
-    @Autowired
-    PagedResourcesAssembler<Semester> pagedSemesterAssembler;
 
     @GetMapping(path = "/students")
-    public PagedModel<EntityModel<Student>> getStudents(
+    public org.springframework.data.web.PagedModel<Student> getStudents(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -42,11 +34,12 @@ public class ContentController {
         System.out.print(totalRecords);
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return pagedStudentAssembler.toModel(studentService.getStudents(pageNo, pageSize));
+        return new PagedModel<>(studentService.getStudents(pageNo, pageSize));
     }
 
+
     @GetMapping(path = "/courses")
-    public PagedModel<EntityModel<Course>> getCourses(
+    public org.springframework.data.web.PagedModel<Course> getCourses(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -55,11 +48,11 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return pagedCourseAssembler.toModel(courseService.getCourses(pageNo, pageSize));
+        return new PagedModel<>(courseService.getCourses(pageNo, pageSize));
     }
 
     @GetMapping(path = "/semesters")
-    public PagedModel<EntityModel<Semester>> getSemesters(
+    public PagedModel<Semester> getSemesters(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -68,6 +61,6 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return pagedSemesterAssembler.toModel(semesterService.getSemesters(pageNo, pageSize));
+        return new PagedModel<>(semesterService.getSemesters(pageNo, pageSize));
     }
 }

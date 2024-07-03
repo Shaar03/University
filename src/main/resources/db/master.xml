@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Including Change sets -->
+    <include file="db/changelog/20240702_00_create_student_table.xml"/>
+    <include file="db/changelog/20240702_01_create_semester_table.xml"/>
+    <include file="db/changelog/20240702_02_create_course_table.xml"/>
+    <include file="db/changelog/20240702_03_create_student_semester_table.xml"/>
+    <include file="db/changelog/20240702_04_create_student_course_table.xml"/>
+    <include file="db/changelog/20240702_05_insert_student_data.xml"/>
+    <include file="db/changelog/20240702_06_insert_semester_data.xml"/>
+    <include file="db/changelog/20240702_07_insert_course_data.xml"/>
+    <include file="db/changelog/20240702_08_insert_student_semester_data.xml"/>
+    <include file="db/changelog/20240702_09_insert_student_course_data.xml"/>
+    <include file="db/changelog/20240703_10_create_my_user_table.xml"/>
+    <include file="db/changelog/20240703_11_insert_my_user_data.xml"/>
+
+
+</databaseChangeLog>

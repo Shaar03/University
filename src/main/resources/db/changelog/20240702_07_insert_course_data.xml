@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240702_07_insert_course_data" author="Adnan Chaar">
+        <sql>
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Introduction to Programming', 'CS101', 1, 1);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Database Management Systems', 'CS202', 2, 2);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Algorithms and Data Structures', 'CS303', 3, 3);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

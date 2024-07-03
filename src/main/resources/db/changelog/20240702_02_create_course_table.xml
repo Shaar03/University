@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20240702_02_create_course_table" author="Adnan Chaar">
+        <sql>
+            CREATE TABLE course (
+                id BIGSERIAL PRIMARY KEY,
+                course_name VARCHAR(100) NOT NULL,
+                course_code VARCHAR(20) NOT NULL,
+                section_number INT NOT NULL,
+                semester_id BIGINT NOT NULL,
+                FOREIGN KEY (semester_id) REFERENCES semester(id)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

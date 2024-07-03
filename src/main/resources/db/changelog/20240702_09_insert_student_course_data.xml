@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240702_09_insert_student_course_data" author="Adnan Chaar">
+        <sql>
+            INSERT INTO student_course (student_id, course_id) VALUES (1, 1);
+            INSERT INTO student_course (student_id, course_id) VALUES (1, 2);
+            INSERT INTO student_course (student_id, course_id) VALUES (2, 2);
+            INSERT INTO student_course (student_id, course_id) VALUES (2, 3);
+            INSERT INTO student_course (student_id, course_id) VALUES (3, 1);
+            INSERT INTO student_course (student_id, course_id) VALUES (3, 3);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

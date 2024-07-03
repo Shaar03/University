@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240702_05_insert_student_data" author="Adnan Chaar">
+        <sql>
+            INSERT INTO student (student_name, email) VALUES ('John Doe', 'john.doe@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Jane Smith', 'jane.smith@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Michael Johnson', 'michael.johnson@example.com');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

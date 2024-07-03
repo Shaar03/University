@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20240703_10_create_my_user_table" author="Adnan Chaar">
+        <sql>
+            INSERT INTO my_user (username, password, role)
+            VALUES ('adnan', '$2a$12$PdvnEzgbmh.8rKU0LbHHs.jfk9teb4TtmXAFjAV3DRzom16VjvbsK', 'USER');
+
+            INSERT INTO my_user (username, password, role)
+            VALUES ('nabil', '$2a$12$HbVwq7JBtyfqk/2HqGOPbe88.4mxIvKyR/XLEiSG39JSITSk6Y8YK', 'ADMIN');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -8,6 +8,22 @@
             INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Introduction to Programming', 'CS101', 1, 1);
             INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Database Management Systems', 'CS202', 2, 2);
             INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Algorithms and Data Structures', 'CS303', 3, 3);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Operating Systems', 'CS304', 1, 1);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Computer Networks', 'CS305', 1, 2);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Software Engineering', 'CS306', 2, 3);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Artificial Intelligence', 'CS307', 1, 4);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Machine Learning', 'CS308', 1, 5);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Human-Computer Interaction', 'CS309', 2, 6);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Theory of Computation', 'CS310', 1, 7);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Cybersecurity', 'CS311', 1, 8);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Computer Graphics', 'CS312', 1, 9);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Mobile Application Development', 'CS313', 2, 10);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Cloud Computing', 'CS314', 1, 11);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Big Data Analytics', 'CS315', 1, 12);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Introduction to Robotics', 'CS316', 1, 13);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Natural Language Processing', 'CS317', 2, 14);
+            INSERT INTO course (course_name, course_code, section_number, semester_id) VALUES ('Quantum Computing', 'CS318', 1, 15);
+
         </sql>
     </changeSet>
 

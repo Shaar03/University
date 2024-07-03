@@ -8,6 +8,20 @@
             INSERT INTO student (student_name, email) VALUES ('John Doe', 'john.doe@example.com');
             INSERT INTO student (student_name, email) VALUES ('Jane Smith', 'jane.smith@example.com');
             INSERT INTO student (student_name, email) VALUES ('Michael Johnson', 'michael.johnson@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Emily Davis', 'emily.davis@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Daniel Martinez', 'daniel.martinez@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Sophia Brown', 'sophia.brown@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Matthew Taylor', 'matthew.taylor@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Olivia Anderson', 'olivia.anderson@example.com');
+            INSERT INTO student (student_name, email) VALUES ('William Thomas', 'william.thomas@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Ava Jackson', 'ava.jackson@example.com');
+            INSERT INTO student (student_name, email) VALUES ('James White', 'james.white@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Isabella Harris', 'isabella.harris@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Benjamin Lewis', 'benjamin.lewis@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Mia Clark', 'mia.clark@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Elijah Robinson', 'elijah.robinson@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Charlotte Walker', 'charlotte.walker@example.com');
+            INSERT INTO student (student_name, email) VALUES ('Lucas Young', 'lucas.young@example.com');
         </sql>
     </changeSet>
 

@@ -3,6 +3,9 @@ package com.project.University.service;
 import com.project.University.entity.Course;
 import com.project.University.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +24,12 @@ public class CourseService {
         return "Course Registered Successfully";
     }
 
-    public List<Course> getCourses() {
-        return courseRepository.findAll();
+    public Page<Course> getCourses(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return courseRepository.findAll(pageable);
+    }
+
+    public long countCourses() {
+        return courseRepository.count();
     }
 }

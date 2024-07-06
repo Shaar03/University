@@ -25,8 +25,7 @@ public class CourseService {
     }
 
     public Page<Course> getCourses(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return courseRepository.findAll(pageable);
+        return courseRepository.findAll(PageRequest.of(pageNo, pageSize));
     }
 
     public long countCourses() {

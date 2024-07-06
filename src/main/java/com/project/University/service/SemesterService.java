@@ -25,8 +25,7 @@ public class SemesterService {
     }
 
     public Page<Semester> getSemesters(int pageNo, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return semesterRepository.findAll(pageable);
+        return semesterRepository.findAll(PageRequest.of(pageNo, pageSize));
     }
 
     public long countSemesters() {

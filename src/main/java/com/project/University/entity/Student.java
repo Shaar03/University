@@ -23,6 +23,8 @@ public class Student {
 
     private String email;
 
+    private int age;
+
     @ManyToMany
     @JoinTable(
             name = "student_course",

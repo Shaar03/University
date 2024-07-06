@@ -34,7 +34,6 @@ public class ContentController {
         long totalRecords = studentService.countStudents();
 
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
-        System.out.print(totalRecords);
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
         return new PagedModel<>(studentService.getStudents(age, pageNo, pageSize));

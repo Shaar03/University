@@ -1,4 +1,4 @@
-package com.project.University.repository.metamode;
+package com.project.University.repository.metamodel;
 
 import com.project.University.entity.Course;
 import com.project.University.entity.Semester;
@@ -9,6 +9,7 @@ import jakarta.persistence.metamodel.StaticMetamodel;
 
 import javax.annotation.processing.Generated;
 
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Student.class)
 public class Student_ {
 

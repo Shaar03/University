@@ -11,8 +11,6 @@ import org.springframework.data.web.PagedModel;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping(path = "api/view")
 @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
@@ -27,7 +25,8 @@ public class ContentController {
 
     @GetMapping(path = "/students")
     public PagedModel<Student> getStudents(
-            @RequestParam Optional<Integer> age,
+            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) String name,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -36,7 +35,7 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return new PagedModel<>(studentService.getStudents(age, pageNo, pageSize));
+        return new PagedModel<>(studentService.getStudents(age, name, pageNo, pageSize));
     }
 
 

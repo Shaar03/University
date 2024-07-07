@@ -2,13 +2,14 @@ package com.project.University.service;
 
 import com.project.University.entity.Semester;
 import com.project.University.repository.SemesterRepository;
+import com.project.University.repository.specification.SemesterSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Service
 public class SemesterService {
@@ -24,8 +25,13 @@ public class SemesterService {
         return "Semester Successfully saved";
     }
 
-    public Page<Semester> getSemesters(int pageNo, int pageSize) {
-        return semesterRepository.findAll(PageRequest.of(pageNo, pageSize));
+    public Page<Semester> getSemesters(LocalDate providedDate, int pageNo, int pageSize) {
+        Specification<Semester> spec = Specification.where(null);
+
+        if(providedDate != null)
+            spec = spec.and(SemesterSpecs.semesterDuring(providedDate));
+
+        return semesterRepository.findAll(spec, PageRequest.of(pageNo, pageSize));
     }
 
     public long countSemesters() {

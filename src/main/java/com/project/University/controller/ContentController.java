@@ -11,6 +11,9 @@ import org.springframework.data.web.PagedModel;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping(path = "api/view")
 @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
@@ -56,6 +59,7 @@ public class ContentController {
 
     @GetMapping(path = "/semesters")
     public PagedModel<Semester> getSemesters(
+            @RequestParam(required = false) LocalDate providedDate,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -64,6 +68,6 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return new PagedModel<>(semesterService.getSemesters(pageNo, pageSize));
+        return new PagedModel<>(semesterService.getSemesters(providedDate, pageNo, pageSize));
     }
 }

@@ -20,6 +20,8 @@
     <include file="db/changelog/20240703_11_insert_my_user_data.xml"/>
     <include file="db/changelog/20240706_12_add_age_column.xml"/>
     <include file="db/changelog/20240706_13_update_student_age.xml"/>
+    <include file="db/changelog/20240707_14_add_credit_hours_column.xml"/>
+    <include file="db/changelog/20240707_15_update_course_credit_hours.xml"/>
 
 
 </databaseChangeLog>

@@ -1,0 +1,29 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240707_15_update_course_credit_hours" author="Adnan Chaar">
+        <sql>
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS101';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS202';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS303';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS304';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS305';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS306';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS307';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS308';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS309';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS310';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS311';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS312';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS313';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS314';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS315';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS316';
+            UPDATE course SET credit_hours = 3 WHERE course_code = 'CS317';
+            UPDATE course SET credit_hours = 4 WHERE course_code = 'CS318';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

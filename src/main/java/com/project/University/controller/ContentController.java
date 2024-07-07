@@ -41,6 +41,8 @@ public class ContentController {
 
     @GetMapping(path = "/courses")
     public PagedModel<Course> getCourses(
+            @RequestParam(required = false) Integer creditHours,
+            @RequestParam(required = false) Integer noOfStudents,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -49,7 +51,7 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return new PagedModel<>(courseService.getCourses(pageNo, pageSize));
+        return new PagedModel<>(courseService.getCourses(creditHours, noOfStudents, pageNo, pageSize));
     }
 
     @GetMapping(path = "/semesters")

@@ -18,6 +18,7 @@ public class Course {
     private Long id;
     private String courseName;
     private String courseCode;
+    private int creditHours;
     private int sectionNumber;
     @ManyToMany(mappedBy = "courses")
     @JsonIgnore

@@ -12,14 +12,6 @@ import javax.annotation.processing.Generated;
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Student.class)
 public class Student_ {
-
-    public static volatile SingularAttribute<Student, Long> id;
-    public static volatile SingularAttribute<Student, String> studentName;
-    public static volatile SingularAttribute<Student, String> email;
-    public static volatile SingularAttribute<Student, Integer> age;
-    public static volatile ListAttribute<Student, Course> courses;
-    public static volatile ListAttribute<Student, Semester> semesters;
-
     public static final String ID = "id";
     public static final String STUDENT_NAME = "studentName";
     public static final String EMAIL = "email";

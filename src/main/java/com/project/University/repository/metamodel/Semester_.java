@@ -13,14 +13,6 @@ import java.time.LocalDate;
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Semester.class)
 public class Semester_ {
-
-    public static volatile SingularAttribute<Semester, Long> id;
-    public static volatile SingularAttribute<Semester, String> semesterName;
-    public static volatile SingularAttribute<Semester, LocalDate> startingDate;
-    public static volatile SingularAttribute<Semester, LocalDate> endingDate;
-    public static volatile ListAttribute<Semester, Course> courses;
-    public static volatile SingularAttribute<Semester, Student> students;
-
     public static final String ID = "id";
     public static final String SEMESTER_NAME = "semsterName";
     public static final String STARTING_DATE = "startingDate";

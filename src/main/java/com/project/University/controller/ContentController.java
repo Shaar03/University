@@ -29,7 +29,8 @@ public class ContentController {
     @GetMapping(path = "/students")
     public PagedModel<Student> getStudents(
             @RequestParam(required = false) Integer age,
-            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String studentName,
+            @RequestParam(required = false) String courseName,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -38,7 +39,7 @@ public class ContentController {
         pageSize = pageSize < 0 || pageSize > 5? 5: pageSize;
         pageNo = pageNo < 0 || pageNo > totalRecords / pageSize? 0: pageNo;
 
-        return new PagedModel<>(studentService.getStudents(age, name, pageNo, pageSize));
+        return new PagedModel<>(studentService.getStudents(age, studentName, courseName, pageNo, pageSize));
     }
 
 

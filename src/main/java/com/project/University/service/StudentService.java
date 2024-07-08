@@ -24,13 +24,15 @@ public class StudentService {
         return "Registered Successfully";
     }
 
-    public Page<Student> getStudents(Integer age, String name, int pageNo, int pageSize){
+    public Page<Student> getStudents(Integer age, String studentName, String courseName, int pageNo, int pageSize){
         Specification<Student> spec = Specification.where(null);
 
-        if(age != null)
+        if(age != null && age > 0)
             spec = spec.and(StudentSpecs.hasAgeGreaterThan(age));
-        if(name != null)
-            spec = spec.and(StudentSpecs.hasName(name));
+        if(studentName != null && !studentName.isEmpty())
+            spec = spec.and(StudentSpecs.hasName(studentName));
+        if(courseName != null && !courseName.isEmpty())
+            spec = spec.and(StudentSpecs.hasCourseName(courseName));
 
         return studentRepository.findAll(spec, PageRequest.of(pageNo, pageSize));
     }

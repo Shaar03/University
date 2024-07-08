@@ -6,13 +6,13 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class CourseSpecs {
 
-    public static Specification<Course> creditHoursGreaterThan(Integer creditHours){
+    public static Specification<Course> hasCreditHoursGreaterThan(Integer creditHours){
         return ((root, query, cb) -> {
             return cb.greaterThan(root.get(Course_.CREDIT_HOURS), creditHours);
         });
     }
 
-    public static Specification<Course> numberOfStudentsGreaterThan(Integer noOfStudents){
+    public static Specification<Course> hasNoOfStudentsGreaterThan(Integer noOfStudents){
         return ((root, query, cb) -> {
             return cb.greaterThan(cb.size(root.get(Course_.STUDENTS)), noOfStudents);
         });

@@ -7,13 +7,13 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class StudentSpecs {
 
-    public static Specification<Student> ageGreaterThan(Integer age){
+    public static Specification<Student> hasAgeGreaterThan(Integer age){
         return ((root, query, cb) -> {
             return cb.greaterThan(root.get(Student_.AGE), age);
         });
     }
 
-    public static Specification<Student> nameIncludes(String name){
+    public static Specification<Student> hasName(String name){
         return ((root, query, cb) -> {
             return cb.like(root.get(Student_.STUDENT_NAME), "%" + name +"%");
         });

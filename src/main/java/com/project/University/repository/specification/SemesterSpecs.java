@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class SemesterSpecs {
 
 
-    public static Specification<Semester> semesterDuring(LocalDate providedDate){
+    public static Specification<Semester> hasDate(LocalDate providedDate){
         return ((root, query, cb) -> {
             return cb.between(
                     cb.literal(providedDate),

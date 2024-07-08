@@ -29,7 +29,7 @@ public class SemesterService {
         Specification<Semester> spec = Specification.where(null);
 
         if(providedDate != null)
-            spec = spec.and(SemesterSpecs.semesterDuring(providedDate));
+            spec = spec.and(SemesterSpecs.hasDate(providedDate));
 
         return semesterRepository.findAll(spec, PageRequest.of(pageNo, pageSize));
     }

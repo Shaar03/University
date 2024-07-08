@@ -30,9 +30,9 @@ public class CourseService {
         Specification<Course> spec = Specification.where(null);
 
         if(creditHours != null)
-            spec = spec.and(CourseSpecs.creditHoursGreaterThan(creditHours));
+            spec = spec.and(CourseSpecs.hasCreditHoursGreaterThan(creditHours));
         if(noOfStudents != null)
-            spec = spec.and(CourseSpecs.numberOfStudentsGreaterThan(noOfStudents));
+            spec = spec.and(CourseSpecs.hasNoOfStudentsGreaterThan(noOfStudents));
 
         return courseRepository.findAll(spec, PageRequest.of(pageNo, pageSize));
     }

@@ -28,9 +28,9 @@ public class StudentService {
         Specification<Student> spec = Specification.where(null);
 
         if(age != null)
-            spec = spec.and(StudentSpecs.ageGreaterThan(age));
+            spec = spec.and(StudentSpecs.hasAgeGreaterThan(age));
         if(name != null)
-            spec = spec.and(StudentSpecs.nameIncludes(name));
+            spec = spec.and(StudentSpecs.hasName(name));
 
         return studentRepository.findAll(spec, PageRequest.of(pageNo, pageSize));
     }

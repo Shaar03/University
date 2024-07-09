@@ -1,6 +1,6 @@
 package com.project.University.repository.projection;
 
-public interface CourseIP {
+public interface CourseBasic {
     String getCourseName();
     String getCourseCode();
     String getCreditHours();

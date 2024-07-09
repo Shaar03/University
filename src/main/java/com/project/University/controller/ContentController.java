@@ -3,9 +3,9 @@ package com.project.University.controller;
 import com.project.University.entity.Course;
 import com.project.University.entity.Semester;
 import com.project.University.entity.Student;
-import com.project.University.repository.projection.CourseIP;
-import com.project.University.repository.projection.SemesterIP;
-import com.project.University.repository.projection.StudentIP;
+import com.project.University.repository.projection.CourseBasic;
+import com.project.University.repository.projection.SemesterBasic;
+import com.project.University.repository.projection.StudentBasic;
 import com.project.University.service.CourseService;
 import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
@@ -26,7 +26,7 @@ public class ContentController {
     @Autowired
     SemesterService semesterService;
     @GetMapping(path = "/user/view/students")
-    public PagedModel<StudentIP> getStudents(
+    public PagedModel<StudentBasic> getStudents(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -38,7 +38,7 @@ public class ContentController {
     }
 
     @GetMapping(path = "/user/view/courses")
-    public PagedModel<CourseIP> getCourses(
+    public PagedModel<CourseBasic> getCourses(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -50,7 +50,7 @@ public class ContentController {
     }
 
     @GetMapping(path = "/user/view/semesters")
-    public PagedModel<SemesterIP> getSemesters(
+    public PagedModel<SemesterBasic> getSemesters(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){

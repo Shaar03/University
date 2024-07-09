@@ -2,7 +2,7 @@ package com.project.University.repository.projection;
 
 import java.time.LocalDate;
 
-public interface SemesterIP {
+public interface SemesterBasic {
     String getSemesterName();
     LocalDate getStartingDate();
     LocalDate getEndingDate();

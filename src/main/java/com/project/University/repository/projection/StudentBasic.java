@@ -1,6 +1,6 @@
 package com.project.University.repository.projection;
 
-public interface StudentIP {
+public interface StudentBasic {
     String getId();
     String getStudentName();
 }

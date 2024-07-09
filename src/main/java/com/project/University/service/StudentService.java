@@ -2,7 +2,7 @@ package com.project.University.service;
 
 import com.project.University.entity.Student;
 import com.project.University.repository.StudentRepository;
-import com.project.University.repository.projection.StudentIP;
+import com.project.University.repository.projection.StudentBasic;
 import com.project.University.repository.specification.StudentSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,8 +28,8 @@ public class StudentService {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    public Page<StudentIP> getStudents(int pageNo, int pageSize){
-        return studentRepository.findAllProjectedBy(PageRequest.of(pageNo, pageSize));
+    public Page<StudentBasic> getStudents(int pageNo, int pageSize){
+        return studentRepository.findAllProjectedBy(PageRequest.of(pageNo, pageSize), StudentBasic.class);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

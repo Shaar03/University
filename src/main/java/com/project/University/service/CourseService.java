@@ -30,7 +30,7 @@ public class CourseService {
         return "Course Registered Successfully";
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public Page<CourseIP> getCourses(int pageNo, int pageSize){
         return courseRepository.findAllProjectedBy(PageRequest.of(pageNo, pageSize));
     }

@@ -27,7 +27,7 @@ public class StudentService {
         return "Registered Successfully";
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public Page<StudentIP> getStudents(int pageNo, int pageSize){
         return studentRepository.findAllProjectedBy(PageRequest.of(pageNo, pageSize));
     }

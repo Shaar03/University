@@ -2,11 +2,13 @@ package com.project.University.service;
 
 import com.project.University.entity.Student;
 import com.project.University.repository.StudentRepository;
+import com.project.University.repository.projection.StudentIP;
 import com.project.University.repository.specification.StudentSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +17,7 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
+    @PreAuthorize("hasRole('ADMIN')")
     public String registerStudent(Student student){
 
         if(studentRepository.findByEmail(student.getEmail()).isPresent()){
@@ -24,6 +27,12 @@ public class StudentService {
         return "Registered Successfully";
     }
 
+    @PreAuthorize("hasRole('USER')")
+    public Page<StudentIP> getStudents(int pageNo, int pageSize){
+        return studentRepository.findAllProjectedBy(PageRequest.of(pageNo, pageSize));
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     public Page<Student> getStudents(Integer age, String studentName, String courseName, int pageNo, int pageSize){
         Specification<Student> spec = Specification.where(null);
 

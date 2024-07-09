@@ -23,8 +23,19 @@ public class ContentController {
     CourseService courseService;
     @Autowired
     SemesterService semesterService;
+    @GetMapping(path = "/user/view/students")
+    public PagedModel<StudentIP> getStudents(
+            @RequestParam(defaultValue = "0") int pageNo,
+            @RequestParam(defaultValue = "5") int pageSize
+    ){
+        long totalRecords = studentService.countStudents();
 
-    @GetMapping(path = "/students")
+        int[] page = validatePage(pageNo, pageSize, totalRecords);
+
+        return new PagedModel<>(studentService.getStudents(page[0], page[1]));
+    }
+
+    @GetMapping(path = "/admin/view/students")
     public PagedModel<Student> getStudents(
             @RequestParam(required = false) Integer age,
             @RequestParam(required = false) String studentName,

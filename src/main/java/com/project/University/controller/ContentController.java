@@ -4,6 +4,7 @@ import com.project.University.entity.Course;
 import com.project.University.entity.Semester;
 import com.project.University.entity.Student;
 import com.project.University.repository.projection.CourseIP;
+import com.project.University.repository.projection.SemesterIP;
 import com.project.University.repository.projection.StudentIP;
 import com.project.University.service.CourseService;
 import com.project.University.service.SemesterService;
@@ -46,6 +47,18 @@ public class ContentController {
         int[] page = validatePage(pageNo, pageSize, totalRecords);
 
         return new PagedModel<>(courseService.getCourses(page[0], page[1]));
+    }
+
+    @GetMapping(path = "/user/view/semesters")
+    public PagedModel<SemesterIP> getSemesters(
+            @RequestParam(defaultValue = "0") int pageNo,
+            @RequestParam(defaultValue = "5") int pageSize
+    ){
+        long totalRecords = semesterService.countSemesters();
+
+        int[] page = validatePage(pageNo, pageSize, totalRecords);
+
+        return new PagedModel<>(semesterService.getSemesters(page[0], page[1]));
     }
 
     @GetMapping(path = "/admin/view/students")

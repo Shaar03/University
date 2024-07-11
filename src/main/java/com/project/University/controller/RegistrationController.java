@@ -4,17 +4,17 @@ import com.project.University.entity.Course;
 import com.project.University.entity.Semester;
 import com.project.University.entity.Student;
 import com.project.University.service.CourseService;
+import com.project.University.service.EmailSenderService;
 import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
+import org.jobrunr.scheduling.JobScheduler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/register")
-@PreAuthorize("hasRole('ADMIN')")
 public class RegistrationController {
 
     @Autowired
@@ -23,10 +23,21 @@ public class RegistrationController {
     CourseService courseService;
     @Autowired
     SemesterService semesterService;
+    @Autowired
+    EmailSenderService emailSenderService;
+    @Autowired
+    JobScheduler jobScheduler;
 
     @PostMapping(path = "/student")
     public List<String> registerStudent(@RequestBody Student student){
-        return List.of(studentService.registerStudent(student));
+        String result = studentService.registerStudent(student);
+        jobScheduler.enqueue(() -> emailSenderService.sendEmail(
+                student.getEmail(),
+                "Registration",
+                result
+        ));
+
+        return List.of(result);
     }
 
     @PostMapping(path = "/course")

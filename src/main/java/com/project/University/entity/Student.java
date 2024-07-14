@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,17 +14,21 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SQLDelete(sql = "UPDATE student SET is_deleted = true WHERE id=?")
+@FilterDef(name = "deletedStudentFilter", parameters = @ParamDef(name = "isDeleted", type = Boolean.class))
+@Filter(name = "deletedStudentFilter", condition = "is_deleted = :isDeleted")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "student_name")
     private String studentName;
 
     private String email;
 
     private int age;
+
+    private boolean isDeleted;
 
     @ManyToMany
     @JoinTable(

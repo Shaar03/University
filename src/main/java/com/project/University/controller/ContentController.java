@@ -11,6 +11,7 @@ import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.web.PagedModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -66,6 +67,7 @@ public class ContentController {
             @RequestParam(required = false) Integer age,
             @RequestParam(required = false) String studentName,
             @RequestParam(required = false) String courseName,
+            @RequestParam(defaultValue = "false") Boolean isDeleted,
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "5") int pageSize
     ){
@@ -73,7 +75,7 @@ public class ContentController {
 
         int[] page = validatePage(pageNo, pageSize, totalRecords);
 
-        return new PagedModel<>(studentService.getStudents(age, studentName, courseName, page[0], page[1]));
+        return new PagedModel<>(studentService.getStudents(age, studentName, courseName, isDeleted, page[0], page[1]));
     }
 
     @GetMapping(path = "/admin/view/courses")
@@ -101,6 +103,13 @@ public class ContentController {
         int[] page = validatePage(pageNo, pageSize, totalRecords);
 
         return new PagedModel<>(semesterService.getSemesters(providedDate, page[0], page[1]));
+    }
+
+    @DeleteMapping(path = "/admin/delete/student/{id}")
+    public ResponseEntity<String> deleteStudent(
+            @PathVariable("id") Long id
+    ){
+        return ResponseEntity.ok(studentService.deleteStudent(id));
     }
 
     private int[] validatePage(int pageNo, int pageSize, long totalRecords){

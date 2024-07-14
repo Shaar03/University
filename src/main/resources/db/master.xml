@@ -22,6 +22,6 @@
     <include file="db/changelog/20240706_13_update_student_age.xml"/>
     <include file="db/changelog/20240707_14_add_credit_hours_column.xml"/>
     <include file="db/changelog/20240707_15_update_course_credit_hours.xml"/>
-
+    <include file="db/changelog/20240714_16_add_is_deleted_column.xml"/>
 
 </databaseChangeLog>

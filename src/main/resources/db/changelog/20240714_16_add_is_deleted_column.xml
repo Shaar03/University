@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240714_16_add_is_deleted_column" author="Adnan Chaar">
+        <sql>
+            ALTER TABLE student
+            ADD is_deleted BOOLEAN
+            DEFAULT 'FALSE';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

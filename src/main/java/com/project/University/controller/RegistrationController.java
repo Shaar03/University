@@ -9,6 +9,7 @@ import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
 import org.jobrunr.scheduling.JobScheduler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class RegistrationController {
     @Autowired
     JobScheduler jobScheduler;
 
+    @CacheEvict(value = "students", allEntries = true)
     @PostMapping(path = "/student")
     public List<String> registerStudent(@RequestBody Student student){
         String result = studentService.registerStudent(student);

@@ -10,11 +10,13 @@ import com.project.University.service.CourseService;
 import com.project.University.service.SemesterService;
 import com.project.University.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api")
@@ -26,6 +28,13 @@ public class ContentController {
     CourseService courseService;
     @Autowired
     SemesterService semesterService;
+
+    @Cacheable("students")
+    @GetMapping(path = "user/view/allStudents")
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
+    }
+
     @GetMapping(path = "/user/view/students")
     public PagedModel<StudentBasic> getStudents(
             @RequestParam(defaultValue = "0") int pageNo,

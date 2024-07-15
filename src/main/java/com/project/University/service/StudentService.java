@@ -15,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -62,7 +63,8 @@ public class StudentService {
 
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteStudent(Long id){
-        if(studentRepository.findById(id).isPresent()) {
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        if(optionalStudent.isPresent() && !optionalStudent.get().isDeleted()) {
             studentRepository.deleteById(id);
             return "Deleted";
         }
@@ -71,5 +73,9 @@ public class StudentService {
 
     public long countStudents() {
         return studentRepository.count();
+    }
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
 }

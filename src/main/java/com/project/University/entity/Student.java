@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @SQLDelete(sql = "UPDATE student SET is_deleted = true WHERE id=?")
 @FilterDef(name = "deletedStudentFilter", parameters = @ParamDef(name = "isDeleted", type = Boolean.class))
 @Filter(name = "deletedStudentFilter", condition = "is_deleted = :isDeleted")
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Student {
 
     private boolean isDeleted;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "student_id"),
@@ -38,7 +39,7 @@ public class Student {
     )
     @JsonIgnore
     private List<Course> courses;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "student_semester",
             joinColumns = @JoinColumn(name = "student_id"),

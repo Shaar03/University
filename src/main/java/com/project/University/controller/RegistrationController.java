@@ -10,6 +10,7 @@ import com.project.University.service.StudentService;
 import org.jobrunr.scheduling.JobScheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,8 @@ public class RegistrationController {
     EmailSenderService emailSenderService;
     @Autowired
     JobScheduler jobScheduler;
+    @Autowired
+    KafkaTemplate<String, String> kafkaTemplate;
 
     @CacheEvict(value = "students", allEntries = true)
     @PostMapping(path = "/student")
@@ -38,6 +41,8 @@ public class RegistrationController {
                 "Registration",
                 result
         ));
+
+        kafkaTemplate.send("university", "Student " + student.getStudentName() + " registered");
 
         return List.of(result);
     }

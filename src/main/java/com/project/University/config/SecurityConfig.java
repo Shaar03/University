@@ -33,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(customizer -> {
-                    customizer.ignoringRequestMatchers("api/register/**", "api/authenticate", "api/admin/delete/**"); // to be able to post/put data
+                    customizer.ignoringRequestMatchers("api/register/**", "api/authenticate", "api/admin/delete/**", "api/v1/messages"); // to be able to post/put data
                 })
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers("api/authenticate").permitAll();
